@@ -45,61 +45,124 @@
         </div>
       </mat-card>
 
-      <mat-accordion multi="true">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Heróis
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-12 col-md-6 col-xl-3 text-center" *ngFor="let hero of user.heroes">
-                {{ hero.name }} nível {{ hero.level }} <span *ngIf="hero.level == hero.maxLevel"> (Maximizado!)</span>
+      <mat-tab-group>
+        <mat-tab label="Vila Principal">
+          <mat-accordion multi="true">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Heróis
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 col-md-6 col-xl-4 text-center" *ngFor="let hero of user.heroes.homeVillage">
+                  {{ hero.name }} nível {{ hero.level }} <span *ngIf="hero.level == hero.maxLevel"> (Maximizado!)</span>
+                </div>
               </div>
-            </div>
-          </mat-expansion-panel>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-              Tropas
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-12 col-md-6 col-xl-3 text-center" *ngFor="let troop of user.troops">
-                {{ troop.name }} nível {{ troop.level }} <span *ngIf="troop.level == troop.maxLevel"> (Maximizado!)</span>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                Tropas
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 col-md-6 col-xl-4 text-center" *ngFor="let troop of user.troops.homeVillage">
+                  {{ troop.name }} nível {{ troop.level }} <span *ngIf="troop.level == troop.maxLevel"> (Maximizado!)</span>
+                </div>
               </div>
-            </div>
-          </mat-expansion-panel>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Feitiços
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-12 col-md-6 col-xl-3 text-center" *ngFor="let spell of user.spells">
-                {{ spell.name }} nível {{ spell.level }} <span *ngIf="spell.level == spell.maxLevel"> (Maximizado!)</span>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Feitiços
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 col-md-6 col-xl-4 text-center" *ngFor="let spell of user.spells.homeVillage">
+                  {{ spell.name }} nível {{ spell.level }} <span *ngIf="spell.level == spell.maxLevel"> (Maximizado!)</span>
+                </div>
               </div>
-            </div>
-          </mat-expansion-panel>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Conquistas
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-12 text-left achievement" *ngFor="let ach of user.achievements">
-                <i class="fas fa-star yellow" *ngFor="let item of ach.filledStars"></i>
-                <i class="far fa-star yellow" *ngFor="let item of ach.emptyStars"></i>
-                <span>
-                  {{ ach.name }} - {{ ach.value }}/{{ ach.target }}
-                </span>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Conquistas
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 text-left achievement" *ngFor="let ach of user.achievements.homeVillage">
+                  <i class="fas fa-star yellow" *ngFor="let item of ach.filledStars"></i>
+                  <i class="far fa-star yellow" *ngFor="let item of ach.emptyStars"></i>
+                  <span>
+                    {{ ach.name }} - {{ ach.value }}/{{ ach.target }}
+                  </span>
+                </div>
               </div>
-            </div>
-          </mat-expansion-panel>
+            </mat-expansion-panel>
 
-        </mat-accordion>
+          </mat-accordion>
+
+        </mat-tab>
+        <mat-tab label="Vila do construtor">
+          <mat-accordion multi="true">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Heróis
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 col-md-6 col-xl-4 text-center" *ngFor="let hero of user.heroes.builderBase">
+                  {{ hero.name }} nível {{ hero.level }} <span *ngIf="hero.level == hero.maxLevel"> (Maximizado!)</span>
+                </div>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                Tropas
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 col-md-6 col-xl-4 text-center" *ngFor="let troop of user.troops.builderBase">
+                  {{ troop.name }} nível {{ troop.level }} <span *ngIf="troop.level == troop.maxLevel"> (Maximizado!)</span>
+                </div>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Feitiços
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 col-md-6 col-xl-4 text-center" *ngFor="let spell of user.spells.builderBase">
+                  {{ spell.name }} nível {{ spell.level }} <span *ngIf="spell.level == spell.maxLevel"> (Maximizado!)</span>
+                </div>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Conquistas
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-12 text-left achievement" *ngFor="let ach of user.achievements.builderBase">
+                  <i class="fas fa-star yellow" *ngFor="let item of ach.filledStars"></i>
+                  <i class="far fa-star yellow" *ngFor="let item of ach.emptyStars"></i>
+                  <span>
+                    {{ ach.name }} - {{ ach.value }}/{{ ach.target }}
+                  </span>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+
+        </mat-tab>
+      </mat-tab-group>
 
     </div>
   </div>

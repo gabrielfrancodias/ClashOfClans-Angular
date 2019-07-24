@@ -4,6 +4,7 @@ import { UserComponent } from './user.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule, MatExpansionModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -13,7 +14,8 @@ import { MatCardModule, MatExpansionModule } from '@angular/material';
     CommonModule,
     FormsModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTabsModule
   ],
   exports: [
     UserComponent
