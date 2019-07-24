@@ -1,0 +1,60 @@
+<div class="container-fluid workstation">
+  <div class="row">
+    <div class="col-12 col-md-6 d-flex a-flex-end">
+      <div class="input-area">
+      <div class="desc">
+        Digite a tag:
+      </div>
+        #
+        <input type="text" class="custom-input"  name="clan_tag" [(ngModel)]="clanTag">
+      </div>
+      <div class="button-area">
+        <button class="custom-button" (click)="getClanInfo()"> Buscar </button>
+      </div>
+    </div>
+    <div class="col-12 text-center info-block" *ngIf="!loaded && !loading">
+      <h4>Você ainda não buscou o clã, chefe!</h4>
+      <img src="assets/img/doubt.png" alt="">
+    </div>
+    <div class="col-12 text-center info-block" *ngIf="loading">
+      <img src="assets/img/search.gif" alt="">
+    </div>
+    <div class="col-12 user-info" *ngIf="!loading && loaded">
+      <div class="text-center title">
+        Informações do clã
+      </div>
+      <mat-card class="user-card">
+        <div class="image-area">
+          <img [src]="clan.badgeUrls.small" alt="Clan Badge">
+        </div>
+        <div class="info-area">
+          <span>{{ clan.name }} - {{ clan.tag }}</span>
+          <span> Clã de nível {{ clan.clanLevel }} - {{ clan.location.name }} </span>
+          <span> Guerras vencidas: {{ clan.warWins }} </span>
+        </div>
+      </mat-card>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Membros do clã
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <mat-card class="member-card col-12 col-md-6 col-xl-4" *ngFor="let member of clan.memberList">
+              <div class="badge-area">
+                <img [src]="member.league.iconUrls.small" alt="member-league-badge">
+              </div>
+              <div class="info-area">
+                <span class="link" (click)="navigateToUser(member.tag)"> {{ member.name }} - {{member.tag}}</span>
+                <span> {{ member.role }} - {{ member.trophies }} troféus </span>
+                <span> Tropas doadas: {{member.donations}}</span>
+                <span> Tropas recebidas: {{member.donationsReceived}}</span>
+              </div>
+            </mat-card>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

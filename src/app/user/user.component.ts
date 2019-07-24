@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CacheService } from '../cache.service';
 
 @Component({
   selector: 'app-user',
@@ -11,11 +13,21 @@ export class UserComponent implements OnInit {
   loaded = false;
   userTag = '20GCJV2UQ';
   loading = false;
-  constructor(private api: ApiService) { }
   user: any;
-  //20GCJV2UQ
+  constructor(
+    private api: ApiService,
+    private cache: CacheService,
+    public router: Router,
+    ) { }
+
+  // 20GCJV2UQ
   ngOnInit() {
-    this.getUserInfo();
+    this.userTag = this.cache.getUserTag();
+    this.cache.setUserTag('');
+    if(this.userTag){
+      this.userTag = this.userTag.substring(1);
+      this.getUserInfo();
+    }
   }
 
   filterBases(){
@@ -44,13 +56,27 @@ export class UserComponent implements OnInit {
 
   getUserInfo(){
     this.loading = true;
-    this.api.getUser(this.userTag).subscribe( ans => {
-      this.user = ans;
-      this.filterBases();
-      this.loading = false;
-      this.loaded = true;
-      console.log(this.user);
-    });
+    this.api.getUser(this.userTag).subscribe(
+      ans => {
+        this.user = ans;
+        console.log(this.user);
+        this.filterBases();
+        this.loading = false;
+        this.loaded = true;
+      },
+      err => {
+        console.log(err);
+        if(err.error.reason === 'notFound') {
+          this.loading = false;
+          this.loaded = false;
+        }
+      }
+    );
+  }
+
+  navigateToClan(clanTag){
+    this.cache.setClanTag(clanTag);
+    this.router.navigateByUrl('/clan');
   }
 
 }

@@ -26,7 +26,7 @@
       <mat-card class="user-card">
         <div class="user">
             <div class="league-area">
-                <img [src]="user.league.iconUrls.small" alt="">
+                <img [src]="user.league? user.league.iconUrls.small: ''" alt="">
               </div>
               <div class="info-area">
                 <span>{{ user.name }} - {{ user.tag }}</span>
@@ -39,7 +39,7 @@
               <img [src]="user.clan.badgeUrls.small" alt="">
             </div>
             <div class="info-area">
-              <span>  {{ user.clan.name }} - {{ user.clan.tag }} </span>
+              <span class="link" (click)="navigateToClan(user.clan.tag)">  {{ user.clan.name }} - {{ user.clan.tag }} </span>
               <span>Nível {{ user.clan.clanLevel }} </span>
             </div>
         </div>
@@ -47,7 +47,7 @@
 
       <mat-tab-group>
         <mat-tab label="Vila Principal">
-          <mat-accordion multi="true">
+          <mat-accordion>
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
