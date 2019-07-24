@@ -1,0 +1,43 @@
+<mat-sidenav-container class="example-container" >
+    <mat-sidenav #sidenav mode="over" [(opened)]="opened">
+      <ul class="menu">
+        <li class="menu-item">
+          <a [routerLink]="['/user']">
+              <i class="fas fa-user"></i>
+              Jogadores
+          </a>
+        </li>
+        <li class="menu-item">
+            <a href="#">
+                <i class="fas fa-users"></i>
+                Clãs
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#">
+            <i class="fas fa-medal"></i>
+            Ligas
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#">
+              <i class="fas fa-globe"></i>
+              Regiões
+            </a>
+        </li>
+      </ul>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="row no-gutters">
+        <div class="col-12 no-gutters header">
+          <div class="icon-area">
+            <mat-icon class="c-pointer" (click)="opened = !opened">menu</mat-icon>
+          </div>
+          <div class="logo-area">
+            <img src="assets/img/clash-logo.png" class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

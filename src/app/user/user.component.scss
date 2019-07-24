@@ -1,0 +1,96 @@
+.a-flex-end {
+  align-items: flex-end;
+}
+
+.workstation {
+  padding: 15px 25px;
+}
+
+.j-flex-start {
+  justify-content: flex-start;
+}
+
+.j-flex-end {
+  justify-content: flex-end;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.custom-input {
+  border-radius: 3px;
+  height: 35px;
+  background: linear-gradient(#FEFEE6, #E9E9B7);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0 5px;
+}
+
+.button-area {
+  padding-left: 15px;
+  .custom-button {
+    border-radius: 10px;
+    background-image: linear-gradient(#CFEA77, #5AA129);
+    border: 2px solid black;
+    color: white;
+    padding: 5px 15px;
+    text-shadow: 3px 3px 5px black;
+    font-size: 14px;
+    outline: none !important;
+  }
+}
+
+.info-block {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 15px;
+  img {
+    width: 300px;
+  }
+  h4 {
+    color: white;
+    text-shadow: 5px 5px 5px black;
+  }
+}
+
+.title {
+  margin: 15px 0;
+}
+
+.user-info {
+  padding-top: 15px !important;
+  .user-card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .user, .clan {
+      width: 50%;
+      @media screen and(max-width: 768px) {
+        width: 100%;
+        margin: 5px 0;
+      }
+      display: flex;
+      align-items: center;
+      .info-area {
+        display: flex;
+        flex-direction: column;
+        padding-left: 25px;
+      }
+    }
+  }
+}
+
+.achievement {
+  height: 50px;
+  i {
+    font-size: 20px;
+  }
+}
+
+.yellow {
+  color: yellow;
+}

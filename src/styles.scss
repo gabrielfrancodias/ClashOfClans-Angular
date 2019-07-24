@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; }
+
+@font-face {
+    font-family: 'ClashOfClans';
+    src: url('assets/fonts/coc.ttf')  format('truetype');
+}
+
+* {
+  font-family: 'ClashOfClans' !important;
+}
+
+.fa, .far, .fas {
+  font-family: "Font Awesome 5 Pro" !important;
+}
+
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+[class *='col'] {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}

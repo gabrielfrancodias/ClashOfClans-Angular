@@ -1,0 +1,106 @@
+<div class="container-fluid workstation">
+  <div class="row">
+    <div class="col-12 col-md-6 d-flex a-flex-end">
+      <div class="input-area">
+      <div class="desc">
+        Digite a tag:
+      </div>
+        #
+        <input type="text" class="custom-input"  name="player_tag" [(ngModel)]="userTag">
+      </div>
+      <div class="button-area">
+        <button class="custom-button" (click)="getUserInfo()"> Buscar </button>
+      </div>
+    </div>
+    <div class="col-12 text-center info-block" *ngIf="!loaded && !loading">
+      <h4>Você ainda não buscou o jogador, chefe!</h4>
+      <img src="assets/img/doubt.png" alt="">
+    </div>
+    <div class="col-12 text-center info-block" *ngIf="loading">
+      <img src="assets/img/search.gif" alt="">
+    </div>
+    <div class="col-12 user-info" *ngIf="!loading && loaded">
+      <div class="text-center title">
+        Informações do jogador
+      </div>
+      <mat-card class="user-card">
+        <div class="user">
+            <div class="league-area">
+                <img [src]="user.league.iconUrls.small" alt="">
+              </div>
+              <div class="info-area">
+                <span>{{ user.name }} - {{ user.tag }}</span>
+                <span>Centro de vila {{user.townHallLevel }} </span>
+                <span>{{ user.trophies }} troféus</span>
+              </div>
+        </div>
+        <div class="clan" *ngIf="user.clan">
+            <div class="badge-area">
+              <img [src]="user.clan.badgeUrls.small" alt="">
+            </div>
+            <div class="info-area">
+              <span>  {{ user.clan.name }} - {{ user.clan.tag }} </span>
+              <span>Nível {{ user.clan.clanLevel }} </span>
+            </div>
+        </div>
+      </mat-card>
+
+      <mat-accordion multi="true">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Heróis
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-3 text-center" *ngFor="let hero of user.heroes">
+                {{ hero.name }} nível {{ hero.level }} <span *ngIf="hero.level == hero.maxLevel"> (Maximizado!)</span>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+              Tropas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-3 text-center" *ngFor="let troop of user.troops">
+                {{ troop.name }} nível {{ troop.level }} <span *ngIf="troop.level == troop.maxLevel"> (Maximizado!)</span>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Feitiços
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-12 col-md-6 col-xl-3 text-center" *ngFor="let spell of user.spells">
+                {{ spell.name }} nível {{ spell.level }} <span *ngIf="spell.level == spell.maxLevel"> (Maximizado!)</span>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Conquistas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-12 text-left achievement" *ngFor="let ach of user.achievements">
+                <i class="fas fa-star yellow" *ngFor="let item of ach.filledStars"></i>
+                <i class="far fa-star yellow" *ngFor="let item of ach.emptyStars"></i>
+                <span>
+                  {{ ach.name }} - {{ ach.value }}/{{ ach.target }}
+                </span>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+  </div>
+</div>

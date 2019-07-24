@@ -1,0 +1,54 @@
+mat-sidenav-container {
+    min-height: 100vh;
+    background: #EAEAE2;
+    mat-sidenav {
+        border-right: 1px solid #333;
+        padding: 15px 10px;
+        .menu {
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          list-style: none;
+          .menu-item {
+              padding-right: 100px;
+              height: 45px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px solid #ccc;
+              a {
+                  color: black;
+                  text-decoration: none;
+              }
+            }
+        }
+    }
+    mat-icon {
+        font-size: 40px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.header {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  background: #413D34;
+  padding: 10px 0 20px 0;
+  .icon-area {
+    width: 55px;
+    color: white;
+  }
+  .logo-area {
+    width: calc(100% - 55px);
+    text-align: center;
+    img {
+      height: 80px;
+      width: auto;
+    }
+  }
+}
